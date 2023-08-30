@@ -1,0 +1,40 @@
+#include<stdio.h>
+
+
+int min(int a ,int b)
+{
+    if(a<b)
+    return a;
+    else
+    return b;
+}
+
+
+void main()
+{
+    int i,j,n,d,dom[10],a[10],m=100;
+
+    printf("Enter value of n\n");
+    scanf("%d",&n);
+
+    printf("Enter number of denomination \n");
+    scanf("%d" ,&d);
+
+    printf("Enter %d Denominations \n",d);
+    for(i=0;i<d;i++)
+    scanf("%d",&dom[i]);
+
+    a[0]=0;
+
+    for(i=1;i<=n;i++)
+    {
+        m=100;
+       for(j=0;j<d;j++)
+       if(dom[j]<=i)
+        m=min(a[i-dom[j]],m);
+
+        a[i]=m+1;
+    }
+    for(i=0;i<=n;i++)
+    printf("%d ",a[i]);
+}
